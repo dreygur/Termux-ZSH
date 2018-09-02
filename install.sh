@@ -1,12 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
+
+echo -e "ZSH on Termux\nForked from Termux-ohmyZSH\nModification by: Totul (fb.com/rytotul)\n"
+
 termux-setup-storage
 
-apt update
-apt install -y git zsh
-git clone https://github.com/Cabbagec/termux-ohmyzsh.git "$HOME/termux-ohmyzsh" --depth 1
+pkg update
+pkg install -y git zsh
+git clone https://github.com/rytotul/termux-zsh/.git "$HOME/termux-ohmyzsh" --depth 1
 
 mv "$HOME/.termux" "$HOME/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
-cp -R "$HOME/termux-ohmyzsh/.termux" "$HOME/.termux"
+cp -R "$HOME/termux-zsh/.termux" "$HOME/.termux"
 
 git clone git://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh" --depth 1
 mv "$HOME/.zshrc" "$HOME/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
@@ -21,10 +24,10 @@ echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HO
 
 chsh -s zsh
 
-echo "oh-my-zsh install complete!\nChoose your color scheme now~"
+echo -e "oh-my-zsh install complete!\nChoose your color scheme now~"
 $HOME/.termux/colors.sh
 
-echo "Choose your font now~"
+echo -e "Choose your font now~"
 $HOME/.termux/fonts.sh
 
 echo "Please restart Termux app..."
